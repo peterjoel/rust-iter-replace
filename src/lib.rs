@@ -83,7 +83,6 @@ pub trait ReplaceIter<'a, I, T> where
     I: Iterator<Item = T>,
     T: Ord {
 
-    // fn replace_iter(self, map: BTreeMap<&'a [T], &'a [T]>) -> Replace<'a, I, T>;
     fn replace(self, from: &'a [T], to: &'a [T]) -> Replace<'a, I, T>;
 }
 
@@ -91,7 +90,6 @@ impl <'a, I, T> ReplaceIter<'a, I, T> for I where
     I: Iterator<Item = T>,
     T: Eq + Ord + Copy {
 
-    // fn replace_iter(self, map: BTreeMap<&'a [T], &'a [T]>) -> Replace<'a, I, T> {
     fn replace(self, from: &'a [T], to: &'a [T]) -> Replace<'a, I, T> {
         Replace::adapt(self, from, to)
     }
